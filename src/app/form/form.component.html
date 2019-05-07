@@ -1,0 +1,25 @@
+<h5>Cadastro de usuários</h5>
+<form #cadastro="ngForm" (ngSubmit)="salvar();cadastro.resetForm();" class="formulario">
+
+  <mat-form-field class="campo">
+		<input matInput placeholder="Nome" name="nome" #nome="ngModel" [(ngModel)]="usuario.nome" maxlength="50" required>
+    <mat-hint>Forneça o seu nome completo</mat-hint>
+    <mat-error *ngIf="!nome.valid && nome.pristine">
+      O nome é obrigatório
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="campo">
+		<input matInput placeholder="Cidade" name="cidade" #cidade="ngModel" [(ngModel)]="usuario.cidade" maxlength="50" required>
+    <mat-hint>Forneça o seu nome completo</mat-hint>
+    <mat-error *ngIf="!cidade.valid && cidade.pristine">
+      A cidade é obrigatória
+    </mat-error>
+  </mat-form-field>
+
+  <div class="botoes">
+     <button mat-stroked-button type="submit" [disabled]="!cadastro.form.valid">Salvar</button>
+    <button mat-stroked-button type="button" (click)="reset();cadastro.reset()">Limpar</button>
+  </div>
+
+</form>
